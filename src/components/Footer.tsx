@@ -1,4 +1,4 @@
-import { Code2, Heart, Github, Mail, ArrowUp } from 'lucide-react';
+import { Code2, Heart, Github, Mail, Linkedin, ArrowUp } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -16,8 +16,11 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-2">
-            <a href="https://github.com/ArseneBeats" target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-obsidian-600 transition-all hover:border-crimson-300 hover:text-crimson-600 dark:border-white/10 dark:text-slate-300" aria-label="GitHub">
+            <a href="https://github.com/ArseneLabs" target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-obsidian-600 transition-all hover:border-crimson-300 hover:text-crimson-600 dark:border-white/10 dark:text-slate-300" aria-label="GitHub">
               <Github className="h-4 w-4" />
+            </a>
+            <a href="https://www.linkedin.com/in/arsenejohnkelly" target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-obsidian-600 transition-all hover:border-crimson-300 hover:text-crimson-600 dark:border-white/10 dark:text-slate-300" aria-label="LinkedIn">
+              <Linkedin className="h-4 w-4" />
             </a>
             <a href="mailto:arsenejohnkelly1@gmail.com" className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-obsidian-600 transition-all hover:border-crimson-300 hover:text-crimson-600 dark:border-white/10 dark:text-slate-300" aria-label="Email">
               <Mail className="h-4 w-4" />

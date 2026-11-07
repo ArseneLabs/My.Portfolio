@@ -68,6 +68,9 @@ npm run preview
 
 **DUFITIMANA Arsene Johnkelly**
 
-- Full-Stack Software Engineer & UI/UX Specialist
-- Location: Kigali, Gasabo, Rwanda
-- GitHub: [@ArseneLabs](https://github.com/ArseneLabs) / [@ArseneLabs](https://github.com/ArseneLabs)
+- **Live Website:** [arsenelabs.online](https://arsenelabs.online)
+- **GitHub:** [@ArseneLabs](https://github.com/ArseneLabs)
+- **LinkedIn:** [in/arsenejohnkelly](https://www.linkedin.com/in/arsenejohnkelly)
+- **Email:** arsenejohnkelly1@gmail.com
+- **Location:** Kigali, Gasabo, Rwanda
+

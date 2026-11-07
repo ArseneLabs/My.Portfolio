@@ -113,7 +113,7 @@ export default function Hero() {
             <Download className="h-4 w-4" /> Download CV
           </a>
           <a
-            href="https://github.com/ArseneBeats"
+            href="https://github.com/ArseneLabs"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-obsidian-800 transition-all hover:border-obsidian-300 hover:shadow-ambient dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/20"

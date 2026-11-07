@@ -1,30 +1,66 @@
 import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Mail, Phone, MapPin, Github, Globe, Send, CheckCircle2, MessageSquare, User, AtSign,
+  Mail, Phone, MapPin, Github, Globe, Linkedin, Send, CheckCircle2, MessageSquare, User, AtSign, Loader2, AlertCircle,
 } from 'lucide-react';
 
 const channels = [
   { icon: Mail, label: 'Email', value: 'arsenejohnkelly1@gmail.com', href: 'mailto:arsenejohnkelly1@gmail.com' },
   { icon: Phone, label: 'Phone', value: '+(250) 790 913 513', href: 'tel:+250790913513' },
   { icon: MapPin, label: 'Location', value: 'Kigali, Gasabo, Rwanda', href: 'https://maps.google.com/?q=Kigali' },
-  { icon: Github, label: 'GitHub', value: 'github.com/ArseneBeats', href: 'https://github.com/ArseneBeats' },
-  { icon: Globe, label: 'Live Portfolio', value: 'arsenebeats.github.io/arsene.portfolio/', href: 'https://arsenebeats.github.io/arsene.portfolio/' },
+  { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/arsenejohnkelly', href: 'https://www.linkedin.com/in/arsenejohnkelly' },
+  { icon: Github, label: 'GitHub', value: 'github.com/ArseneLabs', href: 'https://github.com/ArseneLabs' },
+  { icon: Globe, label: 'Live Portfolio', value: 'arsenelabs.online', href: 'https://arsenelabs.online' },
 ];
 
 const projectTypes = ['Full-Stack Web App', 'UI/UX Design', 'Database/API System', 'Enterprise Consulting'];
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [form, setForm] = useState({ name: '', email: '', type: projectTypes[0], message: '' });
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      setForm({ name: '', email: '', type: projectTypes[0], message: '' });
-    }, 3500);
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || 'https://formsubmit.co/ajax/arsenejohnkelly1@gmail.com';
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          _subject: `[ArseneLabs Inquiry] ${form.name} — ${form.type}`,
+          project_type: form.type,
+          message: form.message,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        setStatus('success');
+        setForm({ name: '', email: '', type: projectTypes[0], message: '' });
+        setTimeout(() => setStatus('idle'), 6000);
+      } else {
+        throw new Error(data.message || 'Submission could not be completed. Please try again or reach out directly.');
+      }
+    } catch (err: unknown) {
+      console.error('Contact form error:', err);
+      setStatus('error');
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : 'Could not send message. You can reach out directly via arsenejohnkelly1@gmail.com.'
+      );
+    }
   };
 
   return (
@@ -128,14 +164,43 @@ export default function Contact() {
                   />
                 </Field>
 
+                {status === 'error' && (
+                  <div className="flex items-start gap-2.5 rounded-2xl border border-rose-300/60 bg-rose-50 p-3.5 text-xs text-rose-800 dark:border-rose-500/30 dark:bg-rose-950/40 dark:text-rose-200">
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" />
+                    <div className="flex-1">
+                      <p className="font-semibold">{errorMessage || 'Message could not be sent.'}</p>
+                      <p className="mt-1">
+                        You can also send your message directly via email:{' '}
+                        <a
+                          href={`mailto:arsenejohnkelly1@gmail.com?subject=${encodeURIComponent(`[Portfolio Inquiry] ${form.name || 'New Client'} — ${form.type}`)}&body=${encodeURIComponent(form.message)}`}
+                          className="font-bold underline hover:text-rose-950 dark:hover:text-white"
+                        >
+                          Open Email Client
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {status === 'success' && (
+                  <div className="flex items-center gap-2.5 rounded-2xl border border-emerald-300/60 bg-emerald-50 p-3.5 text-xs text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-950/40 dark:text-emerald-200">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                    <span>Thank you! Your message has been sent directly to Arsene's inbox. I'll get back to you within 24 hours.</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  disabled={sent}
-                  className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-crimson-600 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition-all hover:bg-crimson-700 disabled:opacity-90"
+                  disabled={status === 'loading'}
+                  className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-crimson-600 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition-all hover:bg-crimson-700 disabled:cursor-not-allowed disabled:opacity-80"
                 >
-                  {sent ? (
+                  {status === 'loading' ? (
                     <>
-                      <CheckCircle2 className="h-4 w-4" /> Message Sent — I'll be in touch
+                      <Loader2 className="h-4 w-4 animate-spin" /> Sending Message...
+                    </>
+                  ) : status === 'success' ? (
+                    <>
+                      <CheckCircle2 className="h-4 w-4" /> Message Sent Successfully
                     </>
                   ) : (
                     <>
@@ -151,7 +216,7 @@ export default function Contact() {
 
       {/* Toast */}
       <AnimatePresence>
-        {sent && (
+        {status === 'success' && (
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -160,7 +225,7 @@ export default function Contact() {
           >
             <span className="inline-flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-emerald-400 dark:text-emerald-600" />
-              Thanks {form.name || 'there'} — your message has been received.
+              Message delivered! I will be in touch with you shortly.
             </span>
           </motion.div>
         )}

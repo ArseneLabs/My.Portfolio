@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ExternalLink,
@@ -77,6 +77,20 @@ function Detail({ icon: Icon, label, value }: { icon: LucideIcon; label: string;
 export default function Projects() {
   const [filter, setFilter] = useState<(typeof filters)[number]>('All');
   const [selected, setSelected] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelected(null);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selected]);
 
   const list = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
 
@@ -179,7 +193,7 @@ export default function Projects() {
                         </a>
                       ) : (
                         <a
-                          href="https://github.com/ArseneBeats"
+                          href="https://github.com/ArseneLabs"
                           target="_blank"
                           rel="noreferrer"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-obsidian-600 transition-all hover:border-crimson-300 hover:text-crimson-600 dark:border-white/10 dark:text-slate-300"
@@ -290,7 +304,7 @@ export default function Projects() {
                     </a>
                   )}
                   <a
-                    href="https://github.com/ArseneBeats"
+                    href="https://github.com/ArseneLabs"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-obsidian-800 transition hover:border-obsidian-300 dark:border-white/10 dark:text-white dark:hover:border-white/20"

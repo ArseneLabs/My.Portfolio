@@ -9,10 +9,10 @@ const checklist = [
 ];
 
 const socials = [
-  { icon: Github, label: 'GitHub', href: 'https://github.com/ArseneBeats', value: 'ArseneBeats' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/ArseneLabs', value: 'ArseneLabs' },
   { icon: Mail, label: 'Email', href: 'mailto:arsenejohnkelly1@gmail.com', value: 'arsenejohnkelly1@gmail.com' },
   { icon: Phone, label: 'Phone', href: 'tel:+250790913513', value: '+(250) 790 913 513' },
-  { icon: Linkedin, label: 'LinkedIn', href: '#', value: 'Arsene Johnkelly' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/arsenejohnkelly', value: 'arsenejohnkelly' },
 ];
 
 export default function About() {

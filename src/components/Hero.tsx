@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Globe, Sparkles, MapPin } from 'lucide-react';
+import { ArrowDown, Github, Globe, Sparkles, MapPin, Download } from 'lucide-react';
 import { useCountUp, useInView } from '@/hooks/useCountUp';
 
 const metrics = [
@@ -104,12 +104,21 @@ export default function Hero() {
             <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
           </button>
           <a
+            href="/DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-obsidian-800 transition-all hover:border-crimson-300 hover:text-crimson-600 hover:shadow-ambient dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/20"
+          >
+            <Download className="h-4 w-4" /> Download CV
+          </a>
+          <a
             href="https://github.com/ArseneBeats"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-obsidian-800 transition-all hover:border-obsidian-300 hover:shadow-ambient dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/20"
           >
-            <Github className="h-4 w-4" /> GitHub (ArseneBeats)
+            <Github className="h-4 w-4" /> GitHub
           </a>
           <a
             href="https://eastafricantts.com"

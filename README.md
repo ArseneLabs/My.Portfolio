@@ -10,6 +10,7 @@ An interactive, high-performance portfolio website showcasing production systems
 ---
 
 ### ⚡ Tech Stack & Features
+
 - **Frontend & UI/UX:** React 18, TypeScript, Tailwind CSS, Framer Motion, Lucide React
 - **Backend & Data (Featured Platforms):** Django, Laravel, MySQL, REST APIs, Python, PHP
 - **Key Features:**
@@ -24,10 +25,12 @@ An interactive, high-performance portfolio website showcasing production systems
 ### 🚀 Getting Started
 
 #### Prerequisites
+
 - Node.js (v18 or higher recommended)
 - npm or yarn / pnpm
 
 #### Installation
+
 ```bash
 # Clone the repository
 git clone https://github.com/ArseneLabs/My.Portfolio.git
@@ -40,12 +43,14 @@ npm install
 ```
 
 #### Development
+
 ```bash
 # Run local development server
 npm run dev
 ```
 
 #### Build & Typecheck
+
 ```bash
 # Run TypeScript type check
 npm run typecheck
@@ -60,7 +65,9 @@ npm run preview
 ---
 
 ### 👤 Author
+
 **DUFITIMANA Arsene Johnkelly**
+
 - Full-Stack Software Engineer & UI/UX Specialist
 - Location: Kigali, Gasabo, Rwanda
-- GitHub: [@ArseneBeats](https://github.com/ArseneBeats) / [@ArseneLabs](https://github.com/ArseneLabs)
+- GitHub: [@ArseneLabs](https://github.com/ArseneLabs) / [@ArseneLabs](https://github.com/ArseneLabs)

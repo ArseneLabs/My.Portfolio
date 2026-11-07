@@ -111,9 +111,11 @@ export default function Navbar({ theme, onToggleTheme, onHireMe }: Props) {
           </button>
 
           <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="hidden items-center gap-1.5 rounded-full border border-slate-200 px-3.5 py-2 text-sm font-medium text-obsidian-700 transition-all hover:border-obsidian-300 hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/5 sm:flex"
+            href="/DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+            className="hidden items-center gap-1.5 rounded-full border border-slate-200 px-3.5 py-2 text-sm font-medium text-obsidian-700 transition-all hover:border-crimson-300 hover:text-crimson-600 hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/5 sm:flex"
           >
             <Download className="h-3.5 w-3.5" /> CV
           </a>
@@ -156,12 +158,22 @@ export default function Navbar({ theme, onToggleTheme, onHireMe }: Props) {
                   {link.label}
                 </button>
               ))}
+              <a
+                href="/DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+                onClick={() => setOpen(false)}
+                className="mt-1 flex items-center justify-center gap-2 rounded-2xl border border-slate-200 px-4 py-3 text-center text-sm font-medium text-obsidian-700 hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/5"
+              >
+                <Download className="h-4 w-4" /> Download CV
+              </a>
               <button
                 onClick={() => {
                   setOpen(false);
                   onHireMe();
                 }}
-                className="mt-1 rounded-2xl bg-crimson-600 px-4 py-3 text-center text-sm font-semibold text-white"
+                className="rounded-2xl bg-crimson-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-glow"
               >
                 Hire Me
               </button>

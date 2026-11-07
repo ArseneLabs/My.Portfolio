@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Mail, Phone, Linkedin, Check, ArrowRight } from 'lucide-react';
+import { Github, Mail, Phone, Linkedin, Check, Download } from 'lucide-react';
 
 const checklist = [
   'Full-Stack Web Application Development (Django, Laravel, React, PHP)',
@@ -32,23 +32,30 @@ export default function About() {
               {/* Decorative frame */}
               <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-crimson-500/20 via-transparent to-emerald-400/15 blur-2xl" />
               <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white shadow-lift dark:border-white/10 dark:bg-white/[0.03]">
-                <div className="aspect-[4/5] w-full overflow-hidden">
+                <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100 dark:bg-obsidian-900">
                   <img
-                    src="https://images.pexels.com/photos/5483158/pexels-photo-5483158.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    src="/profile.png"
                     alt="DUFITIMANA Arsene Johnkelly"
-                    className="h-full w-full object-cover object-center"
-                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                    loading="eager"
                   />
                 </div>
-                {/* Floating badge */}
+                {/* Floating badge with CV link */}
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl border border-white/20 bg-white/90 px-4 py-3 backdrop-blur-md dark:bg-obsidian-950/80">
                   <div>
                     <div className="text-sm font-semibold text-obsidian-900 dark:text-white">DUFITIMANA Arsene J.</div>
                     <div className="text-[11px] text-obsidian-500 dark:text-slate-400">Full-Stack Engineer · UI/UX</div>
                   </div>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-crimson-600 text-white shadow-glow">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
+                  <a
+                    href="/DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download="DUFITIMANA_Arsene_Johnkelly_CV.pdf"
+                    title="Download Official CV"
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-crimson-600 text-white shadow-glow transition-transform hover:scale-105 active:scale-95"
+                  >
+                    <Download className="h-4 w-4" />
+                  </a>
                 </div>
               </div>
 
